@@ -3,11 +3,11 @@
 #include "point.h"
 using namespace std;
 class Vector {
-public:
+private:
 	double x;
 	double y;
-	Vector(Point p1, Point p2);
+public:
+	Vector(const Point p1, const Point p2);
 	double lenght();
-	double scalar_prod(Vector v);
+	double scalar_prod(const Vector v);
 };
-
