@@ -6,12 +6,12 @@ class Square {
 private:
 	Point p1, p2, p3, p4;
 	double a = 0;
+	void calculate();
 
 public:
-	Square(const Point p1_, const Point p2_, const Point p3_);
-	void calculate();
+	Square(const Point& p1_, const Point& p2_, const Point& p3_);
 	bool is_square();
-	double area();
-	double perimetr();
-	Point point4();
+	double area() const;
+	double perimetr() const;
+	Point point4() const;
 };

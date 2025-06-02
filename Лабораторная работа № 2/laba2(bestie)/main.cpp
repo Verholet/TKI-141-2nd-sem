@@ -6,16 +6,15 @@ int main() {
     Point p2;
     Point p3;
     cin >> p1 >> p2 >> p3;
-    Square square(p1, p2, p3);
-    if (square.is_square()) {
-        square.calculate();
+    try {
+        Square square(p1, p2, p3);
         cout << "is square" << endl;
         cout << "Area" << " " << "=" << " " << square.area() << endl;
         cout << "Perimetr" << " " << "=" << " " << square.perimetr() << endl;
         Point p4 = square.point4();
         cout << "Point p4" << " " << "=" << " " << p4 << endl;
     }
-    else {
-        cout << "this not square" << endl;
+    catch (...) {
+        cout << "This is not square" << endl;
     }
 }

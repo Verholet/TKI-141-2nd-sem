@@ -3,10 +3,17 @@
 #include "square.h"
 
 using namespace std;
-Square::Square(const Point p1_, const Point p2_, const Point p3_) {
+Square::Square(const Point& p1_, const Point& p2_, const Point& p3_) {
     p1 = p1_;
     p2 = p2_;
     p3 = p3_;
+    if (is_square()) {
+        calculate();
+    }
+    else {
+        throw "this is not square";
+    }
+
 }
 void Square::calculate() {
     Point result(p2.x() + p3.x() - p1.x(), p2.y() + p3.y() - p1.y());
@@ -20,15 +27,15 @@ bool Square::is_square() {
     Vector v3(p1, p3);
     /*cout << v1.lenght() << " " << v2.lenght() << " " << v1.scalar_prod(v2) << endl;*/
 
-    if (fabs(v1.lenght() - v2.lenght()) < 0.0000001 and fabs(v1.scalar_prod(v2)) < 0.0000001) {
+    if (v1 == v2) {
         swap(p1, p2);
         return true;
     }
-    else if (fabs(v2.lenght() - v3.lenght()) < 0.0000001 and fabs(v2.scalar_prod(v3)) < 0.0000001) {
+    else if (v2 == v3) {
         swap(p1, p3);
         return true;
     }
-    else if (fabs(v1.lenght() - v3.lenght()) < 0.0000001 and fabs(v1.scalar_prod(v3)) < 0.0000001) {
+    else if (v1 == v3) {
         swap(p1, p1);
         return true;
     }
@@ -36,12 +43,12 @@ bool Square::is_square() {
         return false;
     }
 }
-Point Square::point4() {
+Point Square::point4() const {
     return p4;
 }
-double Square::area() {
+double Square::area() const {
     return a * a;
 }
-double Square::perimetr() {
+double Square::perimetr() const {
     return a * 4;
 }

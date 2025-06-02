@@ -2,14 +2,25 @@
 #include <cmath>
 #include "vector.h"
 using namespace std;
-Vector::Vector(const Point p1, const Point p2) {
-	x = p2.x() - p1.x();
-	y = p2.y() - p1.y();
+Vector::Vector(const Point& p1, const Point& p2) {
+    x = p2.x() - p1.x();
+    y = p2.y() - p1.y();
 
 }
-double Vector::lenght() {
-	return (sqrt(pow(x, 2) + pow(y, 2)));
+double Vector::lenght() const {
+    return (sqrt(pow(x, 2) + pow(y, 2)));
 }
-double Vector::scalar_prod(const Vector v) {
-	return(x * v.x + y * v.y);
+double Vector::scalar_prod(const Vector& v) const {
+    return(x * v.x + y * v.y);
+}
+bool Vector::operator==(const Vector& other) const {
+    if (fabs(lenght() - other.lenght()) < EPS and fabs(scalar_prod(other)) < EPS) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+bool Vector::operator!=(const Vector& other) const {
+    return !((*this) == other);
 }
