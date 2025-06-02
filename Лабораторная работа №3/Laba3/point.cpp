@@ -1,34 +1,38 @@
 #include <iostream>
 #include"point.h"
 using namespace std;
-Point::Point(int x_, int y_) {
-	x = x_;
-	y = y_;
+Point::Point(int x_arg, int y_arg) {
+	x_ = x_arg;
+	y_ = y_arg;
 }
 Point::Point() {
-	x = 0;
-	y = 0;
+	x_ = 0;
+	y_ = 0;
 }
-bool Point::operator==(Point other) {
-	return (other.x == x) and (other.y == y);
+int Point::x() const {
+	return x_;
 }
-bool Point::operator!=(Point other) {
-	return (other.x != x) or (other.y != y);
+int Point::y() const {
+	return y_;
 }
-Point Point::operator+(int other) {
-	return Point(x + other, y +other);
+int& Point::x() {
+	return x_;
 }
-Point Point::operator-(int other) {
-	return Point(x - other, y - other);
+int& Point::y() {
+	return y_;
 }
-Point Point::operator*(int other) {
-	return Point(x * other, y * other);
+
+bool Point::operator==(const Point& other) const {
+	return (other.x_ == x_) and (other.y_ == y_);
 }
-ostream& operator<<(ostream& out, Point other) {
-	out << "(" << other.x << ", " << other.y << ")";
+bool Point::operator!=(const Point& other) const {
+	return (other.x_ != x_) or (other.y_ != y_);
+}
+ostream& operator<<(ostream& out, const Point& other) {
+	out << "(" << other.x() << ", " << other.y() << ")";
 	return (out);
 }
-istream& operator>>(istream& in, Point & other) {
-	in >> other.x >> other.y;
+istream& operator>>(istream& in, Point& other) {
+	in >> other.x() >> other.y();
 	return (in);
 }
