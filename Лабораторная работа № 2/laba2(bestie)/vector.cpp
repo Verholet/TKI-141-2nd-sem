@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <cmath>
 #include "vector.h"
@@ -15,7 +14,7 @@ double Vector::scalar_prod(const Vector& v) const {
     return(x * v.x + y * v.y);
 }
 bool Vector::operator==(const Vector& other) const {
-    if (fabs(lenght() - other.lenght()) < EPS and fabs(scalar_prod(other)) < EPS) {
+    if (fabs(lenght() - other.lenght()) < numeric_limits<double>::epsilon() and fabs(scalar_prod(other)) < numeric_limits<double>::epsilon()) {
         return true;
     }
     else {

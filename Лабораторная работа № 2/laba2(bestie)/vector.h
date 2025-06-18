@@ -1,8 +1,7 @@
-
 #pragma once
+#include <limits>
 #include <iostream>
 #include "point.h"
-#define EPS 0.0000001
 using namespace std;
 class Vector {
 private:
