@@ -1,20 +1,29 @@
 ﻿#include <iostream>
 #include "square.h"
+#include "point.h"
+#define MAX_WIDTH 40
+#define MAX_HEIGHT 60
 using namespace std;
+
+/**
+ * @brief Главная функция программы
+ *
+ * Создает объект Square на основе трех точек и выводит информацию о квадрате.
+ */
 int main() {
-    Point p1;
-    Point p2;
-    Point p3;
-    cin >> p1 >> p2 >> p3;
     try {
-        Square square(p1, p2, p3);
-        cout << "is square" << endl;
-        cout << "Area" << " " << "=" << " " << square.area() << endl;
-        cout << "Perimetr" << " " << "=" << " " << square.perimetr() << endl;
-        Point p4 = square.point4();
-        cout << "Point p4" << " " << "=" << " " << p4 << endl;
+        // Создание квадрата
+        Square square(Point(0, 0), Point(MAX_WIDTH, 0), Point(0, MAX_HEIGHT));
+
+        // Вывод информации о квадрате
+        cout << "Square properties:" << endl;
+        cout << "Area: " << square.area() << endl;
+        cout << "Perimeter: " << square.perimetr() << endl;
+        cout << "Fourth point: " << square.point4() << endl;
     }
-    catch (...) {
-        cout << "This is not square" << endl;
+    catch (const char* error) {
+        cout << error << endl;
     }
+
+    return 0;
 }
